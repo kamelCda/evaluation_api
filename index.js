@@ -92,7 +92,7 @@ app.get('/api/personnages/:id', (req, res) => {
     const personnages = Personnages.personnages.find(personnage => personnage.id === id);
     
     if (personnages) {
-      res.json({ name: personnages.role });
+      res.json({ PERSONNAGE : personnages.role });
     } else {
       res.status(404).json({ message: "personnage non trouvé" });
     }
@@ -101,26 +101,36 @@ app.get('/api/personnages/:id', (req, res) => {
 
 
 /* ------------------------------------------------ POST -------------------------------------- */
-
+ 
 
  // Ajout  d'un utilisateur. 
 
  app.post('/api/personnages/',(req,res)=>{
-    const {id,role}=req.body;
- 
-// objet a entrer.
 
-const bellatrix={
+ // insertion via le body
+/*
+const {id,role}=req.body;
+
+Personnages.personnages.push({id,role});
+res.status(201).json({id,role});
+*/
+
+
+//alternative insertion "en dur" du personnage dans le tableau.
+
+
+// objet a entrer "en dur".
+
+ const bellatrix={
     id: parseInt(11),
     role:"bellatrix"
 };
 
-//insertion du personnage dans le tableau.
-
 Personnages.personnages.push(bellatrix);
 res.status(201).json(bellatrix);
 
-})
+
+});
 
 
 
