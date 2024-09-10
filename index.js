@@ -1,8 +1,9 @@
+require('dotenv').config({path: '.env'});
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
@@ -108,19 +109,19 @@ app.get('/api/personnages/:id', (req, res) => {
  app.post('/api/personnages/',(req,res)=>{
 
  // insertion via le body
-/*
+
 const {id,role}=req.body;
 
 Personnages.personnages.push({id,role});
 res.status(201).json({id,role});
-*/
+
 
 
 //alternative insertion "en dur" du personnage dans le tableau.
 
 
 // objet a entrer "en dur".
-
+/*
  const bellatrix={
     id: parseInt(11),
     role:"bellatrix"
@@ -128,7 +129,7 @@ res.status(201).json({id,role});
 
 Personnages.personnages.push(bellatrix);
 res.status(201).json(bellatrix);
-
+*/
 
 });
 
